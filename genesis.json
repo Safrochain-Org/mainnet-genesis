@@ -1288,7 +1288,7 @@
         "denom_creation_fee": [
           {
             "denom": "usaf",
-            "amount": "1000000000"
+            "amount": "100000000"
           }
         ],
         "denom_creation_gas_consume": "2000000"
@@ -1309,7 +1309,7 @@
     "wasm": {
       "params": {
         "code_upload_access": {
-          "permission": "Nobody",
+          "permission": "Everybody",
           "addresses": []
         },
         "instantiate_default_permission": "Everybody"
