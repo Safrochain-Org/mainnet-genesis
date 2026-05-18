@@ -37,7 +37,7 @@ The two SF Foundation gentxs and the three community gentxs marked ✅ below are
 | safro-validator-2 | — | ✅ Accepted (block-1 validator) |
 | [**NodeStake**](./othersGenesis/gentx-fixed-NodeStake.json) | re-signed with `delegator_address` populated | ✅ **Accepted** (block-1 validator) — `addr_safrovaloper1sdlfp8n5fcfa7qw7770ngqs02k876gf6m749ly` |
 | [**catsmile**](./othersGenesis/gentx-fixed-catsmile.json) | re-signed with `delegator_address` populated (new operator + consensus key) | ✅ **Accepted** (block-1 validator) — `addr_safrovaloper13njz6aqmtwtu7vl4w0c6j7dvt7qj6t77vg6r9s` |
-| [**Winnode**](./othersGenesis/gentx-fixed-winnode.json) | re-signed with `commission.max_change_rate` lowered (0.50 → 0.01) | ✅ **Accepted** (block-1 validator) — `addr_safrovaloper1a6ve2escz8h4ws3ttelfp54av2wwvty6f4xq8z` |
+| [**Winnode**](./othersGenesis/gentx-fixed-winnode.json) | `commission.max_change_rate` lowered (0.50 → 0.01) ✓; **`delegator_address` still empty** — should be populated on next re-sign so the field carries the operator address explicitly | ✅ Accepted (block-1 validator) — `addr_safrovaloper1a6ve2escz8h4ws3ttelfp54av2wwvty6f4xq8z` |
 | [**VALIDARIOS**](./othersGenesis/gentx-1adee57b2f70d1759b8b05330b757ed31c94655a.json) | `delegator_address` | ❌ Awaiting re-sign |
 | [**HusoNode**](./othersGenesis/gentx-35b4137ae4011298e46629b5f820ca26257410ba.json) | `delegator_address` | ❌ Awaiting re-sign |
 | [**Vinjan.Inc**](./othersGenesis/gentx-b7a2c40d3e24f859649f995889904c7bb23a5b5c.json) | `delegator_address` | ❌ Awaiting re-sign |
