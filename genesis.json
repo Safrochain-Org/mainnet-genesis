@@ -1068,7 +1068,7 @@
         "minimum_gas_prices": [
           {
             "denom": "usaf",
-            "amount": "100000.000000000000000000"
+            "amount": "0.005000000000000000"
           }
         ]
       }
@@ -1241,9 +1241,9 @@
       "params": {
         "mint_denom": "usaf",
         "inflation_rate_change": "0.030000000000000000",
-        "inflation_max": "0.140000000000000000",
+        "inflation_max": "0.120000000000000000",
         "inflation_min": "0.030000000000000000",
-        "goal_bonded": "0.670000000000000000",
+        "goal_bonded": "0.550000000000000000",
         "blocks_per_year": "6311520"
       }
     },

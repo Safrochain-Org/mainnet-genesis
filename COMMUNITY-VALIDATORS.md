@@ -29,7 +29,7 @@ Please also paste the file's **SHA-256** in the message so we can confirm we rec
 
 ## Status — find your validator
 
-All 9 gentxs are baked into the launch genesis (sha256 `509ee79d6ef838a37a35c4d06fca93b3a75fdc2c40fa92eda7b6473e39b046cd`). Each row links to the **accepted** signed gentx.
+All 9 gentxs are baked into the launch genesis (sha256 `f7ba082ced88ee5b00eb7558f7ca589fb641e4232d5eae9da4baa51b84979ee8`). Each row links to the **accepted** signed gentx.
 
 | Moniker | Issues | Status |
 | :------ | :----- | :----- |
