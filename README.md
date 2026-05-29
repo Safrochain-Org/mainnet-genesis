@@ -22,8 +22,8 @@
 | --- | --- |
 | **File** | [`genesis.json`](./genesis.json) |
 | **Size** | 64,739 bytes (≈ 63 KB) |
-| **SHA-256** | `cf5c6514dd6ba9ded66469aea8fd53fa452cfcd719a6e890b88ba9c0fc649eb8` |
-| **Genesis time** | `2026-05-30T16:00:00.000000Z` |
+| **SHA-256** | `588c98b9291e56e71ddf7471c56480e3e951e8b5bc4790d5e763c6b38888ef00` |
+| **Genesis time** | `2026-05-30T12:00:00.000000Z` |
 | **Initial height** | `1` |
 
 ---
@@ -113,7 +113,7 @@ curl -fsSL -o genesis.json \
 
 # 2. Verify integrity
 shasum -a 256 genesis.json
-# Expected: cf5c6514dd6ba9ded66469aea8fd53fa452cfcd719a6e890b88ba9c0fc649eb8
+# Expected: 588c98b9291e56e71ddf7471c56480e3e951e8b5bc4790d5e763c6b38888ef00
 
 # 3. Validate against safrochaind
 mkdir -p ~/.safrochain/config
