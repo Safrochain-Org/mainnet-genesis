@@ -21,8 +21,8 @@
 | | |
 | --- | --- |
 | **File** | [`genesis.json`](./genesis.json) |
-| **Size** | 40,987 bytes (≈ 40 KB) |
-| **SHA-256** | `7cc3c5bbdcfb27e766eae5f302cb23b95d0ab94b0f1cee0e5adf747d224fb16b` |
+| **Size** | 66,153 bytes (≈ 65 KB) |
+| **SHA-256** | `42caa89be2628edeb09dec2b4ae527930d0cd139eaa52c5979b8338c0ea19b08` |
 | **Genesis time** | `2026-04-18T15:44:32.803866Z` |
 | **Initial height** | `1` |
 
@@ -58,9 +58,9 @@
 
 | Allocation | Amount (SAF) | % of supply | Notes |
 | :--- | ---: | ---: | :--- |
-| **DAO Reserve** | 200 000 000 | 20 % | Governance & community-driven decisions. 170 K SAF earmarked to fund validator self-stake wallets at genesis; ~149 M SAF pre-delegated across the 9 genesis validators. |
+| **DAO Reserve** | 210 000 000 | 21 % | Governance & community-driven decisions. 170 K SAF earmarked to fund validator self-stake wallets at genesis; ~149 M SAF pre-delegated across the 9 genesis validators. Includes a 10 M SAF Developer Reserves residual moved from the Team pool, held under DAO control until specific contributors are designated. |
 | **Community** | 150 000 000 | 15 % | Airdrops, missions, community rewards |
-| **Team** | 150 000 000 | 15 % | Team allocation (to be split into vesting schedules in a future genesis revision) |
+| **Team** | 140 000 000 | 14 % | Cofounders (Dan Baruka, Gentil Samvura — 40 M each, 80 M total) hold `PeriodicVestingAccount`s (6 mo cliff + 24 mo monthly). All other 13 team members hold `ContinuousVestingAccount`s — linear release between `start_time` (= genesis + cliff) and `end_time`. Cliff/vest by group: Developers 3 mo + 18 mo, Management 6 mo + 18 mo, Advisors 3 mo + 12 mo. Gentil's Mgmt + Advisor allocations are merged into a single 10.5 M continuous account under the Management schedule. The 10 M Developer Reserves residual is parked on the DAO Reserve wallet. See [wallets-tokenomics.json](../wallets-tokenomics.json) for the per-member breakdown. |
 | **Ecosystem Development** | 150 000 000 | 15 % | Ecosystem growth and developer programs |
 | **Public Sale** | 100 000 000 | 10 % | Public sale participants |
 | **Liquidity** | 100 000 000 | 10 % | DeFi liquidity pools & market making |
