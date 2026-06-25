@@ -108,7 +108,7 @@ Reproduce the checksum and validate the file with the official binary:
 ```bash
 # 1. Download
 curl -fsSL -o genesis.json \
-  https://raw.githubusercontent.com/Safrochain-Org/draft-genesis/main/genesis.json
+  https://raw.githubusercontent.com/Safrochain-Org/mainnet-genesis/main/genesis.json
 
 # 2. Verify integrity
 shasum -a 256 genesis.json
@@ -159,7 +159,7 @@ safrochaind init <your-moniker> --chain-id safrochain-1
 
 # 3. Drop in this genesis
 curl -fsSL -o ~/.safrochain/config/genesis.json \
-  https://raw.githubusercontent.com/Safrochain-Org/draft-genesis/main/genesis.json
+  https://raw.githubusercontent.com/Safrochain-Org/mainnet-genesis/main/genesis.json
 shasum -a 256 ~/.safrochain/config/genesis.json
 # Confirm SHA matches: c05ac5aec1918df9edb257e8e0eea184d73edc51370eb4aa9f0b4f0aad615c4d
 
@@ -205,6 +205,7 @@ Not published (local-only / git-ignored):
 
 | | |
 | :--- | :--- |
+| 📂 Repository | [Safrochain-Org/mainnet-genesis](https://github.com/Safrochain-Org/mainnet-genesis) |
 | 🌐 Website  | [safrochain.com](https://safrochain.com) |
 | 📦 Node binary | [`safrochaind` v0.2.2](https://github.com/Safrochain-Org/safrochain-node/releases/tag/v0.2.2) |
 | 📚 Docs | [docs.safrochain.com](https://docs.safrochain.com) |
