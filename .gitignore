@@ -2,11 +2,13 @@
 *.secret
 *.mnemonic
 team-mnemonic*
+preprod-keys/
 
 # Genesis snapshots / backups
 genesis.json.bak*
 *.bak.*
+*.~
 
-# Internal drafts that never go on GitHub
+# Internal drafts / archives
 operator-messages/
-dao-delegate-manifest.json
+_archive/

@@ -1,14 +1,14 @@
 <div align="center">
 
-# Safrochain Mainnet — Draft Genesis
+# Safrochain Mainnet — Launch Genesis
 
-**The canonical draft `genesis.json` for `safrochain-1`**
+**The canonical `genesis.json` for `safrochain-1`**
 
 [![Chain ID](https://img.shields.io/badge/chain--id-safrochain--1-1f6feb?style=for-the-badge)](#chain-parameters)
 [![Denom](https://img.shields.io/badge/denom-usaf-8957e5?style=for-the-badge)](#chain-parameters)
 [![Supply](https://img.shields.io/badge/supply-1%2C000%2C000%2C000_SAF-2da44e?style=for-the-badge)](#tokenomics)
-[![Validators](https://img.shields.io/badge/genesis_validators-9-fb8500?style=for-the-badge)](#genesis-validators)
-[![Status](https://img.shields.io/badge/status-draft-d29922?style=for-the-badge)](#status)
+[![Validators](https://img.shields.io/badge/genesis_validators-4-fb8500?style=for-the-badge)](#genesis-validators)
+[![Status](https://img.shields.io/badge/status-launch--ready-2da44e?style=for-the-badge)](#status)
 
 </div>
 
@@ -16,15 +16,16 @@
 
 ## Status
 
-> **⚠️ DRAFT** — This file is published for community review of the initial state ahead of network launch. The `genesis_time`, validator set, and individual delegations may still change before the final launch genesis is cut. Treat the SHA below as a checkpoint, not the launch hash.
+> ✅ **LAUNCH READY** — Genesis is final and deployed to all foundation nodes. Chain wakes at **2026-06-25 10:00:00 UTC**.
 
 | | |
 | --- | --- |
 | **File** | [`genesis.json`](./genesis.json) |
-| **Size** | 64,739 bytes (≈ 63 KB) |
-| **SHA-256** | `f5b699aa9c6d76e18f4abf93c4a2833e09364e40789f62c6d3018a5f9fdf75a2` |
-| **Genesis time** | `2026-05-30T12:00:00.000000Z` |
+| **Size** | 27,596 bytes (≈ 27 KB) |
+| **SHA-256** | `c05ac5aec1918df9edb257e8e0eea184d73edc51370eb4aa9f0b4f0aad615c4d` |
+| **Genesis time** | `2026-06-25T10:00:00Z` |
 | **Initial height** | `1` |
+| **Binary** | `safrochaind v0.2.2` (Cosmos SDK 0.50.14, CometBFT 0.38.21, CosmWasm 0.51) |
 
 ---
 
@@ -39,16 +40,23 @@
 | **Max validators** | 100 |
 | **Min commission rate** | 5 % |
 | **Unbonding period** | 14 days (`1209600s`) |
-| **Voting period** | 7 days (`604800s`) — expedited 1 day |
-| **Min gov deposit** | 5 000 SAF (`5 000 000 000 usaf`) |
-| **Gov quorum** | 33.4 % |
-| **Min gas price** | `0.05 usaf` (global fee) |
+| **Voting period** | 7 days (`604800s`) — expedited 1 day (`86400s`) |
+| **Min gov deposit** | 5 000 SAF · expedited 10 000 SAF |
+| **Gov quorum / threshold / veto** | 33.4 % / 50 % / 33.4 % |
+| **Min gas price** | `0.05 usaf` (globalfee) |
 | **Inflation** | min 3 % · max 12 % · target bonded 55 % |
 | **Slash — downtime** | 0.01 % · jail 10 min · window 10 000 blocks @ 50 % |
 | **Slash — double-sign** | 5 % |
 | **Evidence max age** | 14 days / 241 920 blocks |
 | **Max block bytes** | 22 020 096 |
 | **Max block gas** | 100 000 000 |
+| **CosmWasm code upload** | Permissionless (`Everybody`) |
+| **Feeshare (dev rev-share)** | 25 % of contract-tx fees to registered contract dev |
+| **Tokenfactory denom creation fee** | 100 SAF |
+
+### IBC stack (full)
+
+`ibc-core`, `ibc-transfer` (ICS-20 send + receive), `interchain-accounts` host + controller, `interchain-query`, `feeibc` (ICS-29), `packet-forward-middleware`, `ibchooks` (Wasm via IBC). Light clients: `07-tendermint`, `06-solomachine`.
 
 ---
 
@@ -56,49 +64,40 @@
 
 **Total supply: 1 000 000 000 SAF**
 
-| Allocation | Amount (SAF) | % of supply | Notes |
+| Allocation | Amount (SAF) | % | Notes |
 | :--- | ---: | ---: | :--- |
-| **DAO Reserve** | 210 000 000 | 21 % | Governance & community-driven decisions. ~135.76 M SAF delegated to the 8 manifested validators via post-launch `MsgDelegate` (see [Initial bonded stake](#initial-bonded-stake)). Includes a 10 M SAF Developer Reserves residual moved from the Team pool, held under DAO control until specific contributors are designated. |
-| **Community** | 150 000 000 | 15 % | Airdrops, missions, community rewards |
-| **Team** | 140 000 000 | 14 % | Cofounders (Dan Baruka, Gentil Samvura — 40 M each, 80 M total) hold `PeriodicVestingAccount`s (6 mo cliff + 24 mo monthly). All other 13 team members hold `ContinuousVestingAccount`s — linear release between `start_time` (= genesis + cliff) and `end_time`. Cliff/vest by group: Developers 3 mo + 18 mo, Management 6 mo + 18 mo, Advisors 3 mo + 12 mo. Gentil's Mgmt + Advisor allocations are merged into a single 10.5 M continuous account under the Management schedule. The 10 M Developer Reserves residual is parked on the DAO Reserve wallet. See [wallets-tokenomics.json](../wallets-tokenomics.json) for the per-member breakdown. |
-| **Ecosystem Development** | 150 000 000 | 15 % | Ecosystem growth and developer programs |
-| **Public Sale** | 100 000 000 | 10 % | Public sale participants |
-| **Liquidity** | 100 000 000 | 10 % | DeFi liquidity pools & market making |
-| **Treasury** | 100 000 000 | 10 % | Foundation treasury |
-| **Partners** | 50 000 000 | 5 % | Strategic partnerships |
+| **DAO Reserve** | 199 776 000 | 19.98 % | Governance-controlled treasury. 200M nominal less 224k pre-seeded into the 4 active validator + 2 cosigner-backup wallets. |
+| **Community** | 150 000 000 | 15.00 % | Airdrops, missions, community rewards |
+| **Ecosystem Dev** | 150 000 000 | 15.00 % | Grants & dApp programs (external developer pool) |
+| **Liquidity** | 100 000 000 | 10.00 % | DEX liquidity & market making |
+| **Treasury** | 100 000 000 | 10.00 % | Foundation operating treasury |
+| **Public Sale** | 100 000 000 | 10.00 % | Sale participants |
+| **Partners** | 50 000 000 | 5.00 % | Strategic partnerships |
+| **Team (vesting)** | 140 000 000 | 14.00 % | 15 vesting accounts — see below |
+| **Dev Reserves** | 10 000 000 | 1.00 % | Liquid dedicated wallet for grants/bounties/audits |
+| **Active validator wallets** | 124 000 | 0.012 % | Ubuntu 51k + Kilimanjaro 51k + HusoNode 11k + Winnode 11k |
+| **SF cosigner backups** | 100 000 | 0.010 % | 2 × 50k for Horcrux operations |
 | **— Total** | **1 000 000 000** | **100 %** | |
-
-### Initial bonded stake
-
-| Source | Bonded |
-| :--- | ---: |
-| Community validator self-delegations (7 × 10 K) | 70 000 SAF |
-| SF foundation validator self-delegations (2 × 50 K) | 100 000 SAF |
-| **Total bonded at block 1** | **170 000 SAF** |
-| DAO Reserve `MsgDelegate` txs (8 entries in [`dao-delegate-manifest.json`](./dao-delegate-manifest.json)), broadcast post-launch | 135 757 093 SAF |
-| **Bonded once DAO delegations confirm (~block 5–10)** | **≈ 135.93 M SAF (~13.6 % of supply)** |
-
-The DAO Reserve delegations are **applied as live transactions immediately after launch**, not baked into genesis state. The runbook is in [`bin/apply-dao-delegations-postgenesis.sh`](../bin/apply-dao-delegations-postgenesis.sh) — it imports the `dao-reserve` key, waits until the chain is producing blocks, and broadcasts the 8 `MsgDelegate` txs in sequence. (Earlier drafts attempted to embed these delegations directly in `app_state.staking.delegations`, but the chain's `InitGenesis` ordering runs `staking` before `genutil`, so delegations to validators that gen_txs would later create produce a `validator does not exist` panic.)
 
 ---
 
 ## Genesis Validators
 
-The validator set at block 1 consists of the **2 Safrochain Foundation validators + 7 community validators** (all 9 gentxs baked into `app_state.genutil.gen_txs`).
+The active validator set at block 1 consists of **2 Safrochain Foundation validators + 2 community validators**, all 4 gentxs baked into `app_state.genutil.gen_txs`.
 
-| # | Moniker | Class | Self-stake | Commission | Max | Operator (valoper) |
-| :-- | :--- | :--- | ---: | ---: | ---: | :--- |
-| 1 | safro-validator-1 | Foundation | 50 000 SAF | 10 % | 20 % | `addr_safrovaloper1j9l9salsfwq83cf83zsg7wdhvc5p2f6xshlpzn` |
-| 2 | safro-validator-2 | Foundation | 50 000 SAF | 10 % | 20 % | `addr_safrovaloper1h2jy3sghpwevgw3cjwqk055ejwxn5ls3ur7c5q` |
-| 3 | **NodeStake** | Community | 10 000 SAF | 5 % | 20 % | `addr_safrovaloper1sdlfp8n5fcfa7qw7770ngqs02k876gf6m749ly` |
-| 4 | **catsmile** | Community | 10 000 SAF | 10 % | 20 % | `addr_safrovaloper13njz6aqmtwtu7vl4w0c6j7dvt7qj6t77vg6r9s` |
-| 5 | **Winnode** | Community | 10 000 SAF | 5 % | 20 % | `addr_safrovaloper1a6ve2escz8h4ws3ttelfp54av2wwvty6f4xq8z` |
-| 6 | **Vinjan.Inc** | Community | 10 000 SAF | 10 % | 20 % | `addr_safrovaloper1t0aw2zvghsdr7avfksgtsu090w8nvqpckefdsq` |
-| 7 | **lehuukhoa** | Community | 10 000 SAF | 10 % | 20 % | `addr_safrovaloper1d2qnc709usexrg9uyjxgfet6xy0vt8wv8jj6m4` |
-| 8 | **HusoNode** | Community | 10 000 SAF | 10 % | 20 % | `addr_safrovaloper1t5smj0hxatf05gqw3y75an02lhed7xqewjl3lq` |
-| 9 | **VALIDARIOS** | Community | 10 000 SAF | 5 % | 20 % | (operator: `addr_safro1yftmqycaa4td0x6zzgpwcpqg8ze988tdjjrqsg`) |
+| # | Moniker | Class | Self-stake | Commission | Operator (valoper) |
+| :-- | :--- | :--- | ---: | ---: | :--- |
+| 1 | **Ubuntu** | Foundation | 50 000 SAF | 8 % | `addr_safrovaloper1udj3fxkjpdf6zwa9sg5x89tg2k4cgels6pu2zt` |
+| 2 | **Kilimanjaro** | Foundation | 50 000 SAF | 8 % | `addr_safrovaloper1aqwk6uaw0q3xfd306fc6uuslumjdalm0x3g9tc` |
+| 3 | **HusoNode** | Community | 10 000 SAF | 10 % | `addr_safrovaloper1y5axpuvmns5ksl7tv8j933gtg3trr0slnlclxx` |
+| 4 | **Winnode** | Community | 10 000 SAF | 10 % | `addr_safrovaloper1jz4fmzlc9lskmxum02elvml6jms03wa77d06vk` |
+| | **Total bonded at h=1** | | **120 000 SAF** | | |
 
-All 9 gentxs pass `safrochaind genesis collect-gentxs` and `safrochaind genesis validate`, and a clean `InitGenesis` simulation locally. The consensus pubkeys of the foundation validators are the **production** ed25519 keys held by the running daemons and sharded across the 3 Horcrux cosigners (2-of-3 threshold, one cluster per validator).
+Foundation validator consensus pubkeys are the **production** ed25519 keys held by 3-cosigner Horcrux clusters (2-of-3 threshold per validator). All 4 standalone signed gentxs are committed alongside this README (`gentx-fixed-*.json`).
+
+### Community validators joining post-launch
+
+Any community validator can join via `MsgCreateValidator` once the chain is live. Standard flow: install `safrochaind v0.2.2`, sync to tip, create a key, fund it, then submit `safrochaind tx staking create-validator …`.
 
 ---
 
@@ -113,7 +112,7 @@ curl -fsSL -o genesis.json \
 
 # 2. Verify integrity
 shasum -a 256 genesis.json
-# Expected: f5b699aa9c6d76e18f4abf93c4a2833e09364e40789f62c6d3018a5f9fdf75a2
+# Expected: c05ac5aec1918df9edb257e8e0eea184d73edc51370eb4aa9f0b4f0aad615c4d
 
 # 3. Validate against safrochaind
 mkdir -p ~/.safrochain/config
@@ -122,7 +121,7 @@ safrochaind genesis validate --home ~/.safrochain
 # Expected: "File at ... is a valid genesis file"
 ```
 
-Inspect the bundled gen-txs:
+Inspect the 4 bundled gentxs:
 
 ```bash
 jq '.app_state.genutil.gen_txs
@@ -133,19 +132,72 @@ jq '.app_state.genutil.gen_txs
              commission: .commission.rate})' genesis.json
 ```
 
-Confirm supply & bonded plan:
+Confirm supply integrity:
 
 ```bash
 # Total supply (must equal 1e15 usaf = 1B SAF)
 jq -r '.app_state.bank.supply[] | "\(.denom): \(.amount)"' genesis.json
 
-# Sum of bank balances (must equal supply)
+# Sum of balances (must equal supply)
 jq '[.app_state.bank.balances[].coins[]
      | select(.denom == "usaf") | .amount | tonumber] | add' genesis.json
-
-# DAO genesis delegations (totals ~149.08 M SAF)
-jq '[.app_state.staking.delegations[] | .shares | tonumber] | add' genesis.json
 ```
+
+---
+
+## Joining the network
+
+If you want to run a node (validator or RPC), see the operator guide:
+
+```bash
+# 1. Install safrochaind v0.2.2
+git clone --depth 1 --branch v0.2.2 https://github.com/Safrochain-Org/safrochain-node ~/safrochain-node
+cd ~/safrochain-node && make install
+
+# 2. Initialize a fresh home
+safrochaind init <your-moniker> --chain-id safrochain-1
+
+# 3. Drop in this genesis
+curl -fsSL -o ~/.safrochain/config/genesis.json \
+  https://raw.githubusercontent.com/Safrochain-Org/draft-genesis/main/genesis.json
+shasum -a 256 ~/.safrochain/config/genesis.json
+# Confirm SHA matches: c05ac5aec1918df9edb257e8e0eea184d73edc51370eb4aa9f0b4f0aad615c4d
+
+# 4. Configure seeds + persistent_peers in ~/.safrochain/config/config.toml
+#    seeds = "bc772fdc9749e6dfd200a9428f07d86fe4fd34ec@seed.safrochain.network:26666,d323d296ba55e89fb6ce1a724f8da1740bd8cbb0@seed2.safrochain.network:26670"
+#    persistent_peers = "131aeac8bd7fe9b678cdaa9cc3fe2d7af3ded1fe@rpc1.safrochain.network:26676,5cd69b65c08c78937b9cdf17617caaa1aa33672e@rpc2.safrochain.network:36656"
+#    minimum-gas-prices = "0.05usaf"   in ~/.safrochain/config/app.toml
+
+# 5. Start at or before 2026-06-25 10:00 UTC
+safrochaind start
+# The daemon will log "Genesis time is in the future. Sleeping until then..."
+# and automatically commit block 1 at exactly 10:00:00 UTC.
+```
+
+Public RPC/API/gRPC endpoints (all `*.safrochain.network`): `rpc1`, `rpc2`, `api1`, `api2`, `grpc1`, `grpc2`, `grpc-web`. Load-balanced aliases: `rpc.safrochain.network`, `api.safrochain.network`, `grpc.safrochain.network`. These start serving mainnet once the chain commits block 1.
+
+---
+
+## Files in this folder
+
+| File | Purpose |
+| :--- | :--- |
+| [`genesis.json`](./genesis.json) | The mainnet genesis (file to publish) |
+| [`gentx-fixed-safro-validator-1.json`](./gentx-fixed-safro-validator-1.json) | **Ubuntu** signed gentx |
+| [`gentx-fixed-safro-validator-2.json`](./gentx-fixed-safro-validator-2.json) | **Kilimanjaro** signed gentx |
+| [`gentx-fixed-HusoNode.json`](./gentx-fixed-HusoNode.json) | HusoNode signed gentx |
+| [`gentx-fixed-Winnode.json`](./gentx-fixed-Winnode.json) | Winnode signed gentx |
+| [`_consensus_pubkeys.json`](./_consensus_pubkeys.json) | Foundation validators' public consensus keys (Horcrux-protected) |
+| `README.md` | This file |
+
+Not published (local-only / git-ignored):
+
+| Path | Why it's private |
+| :--- | :--- |
+| `preprod-keys/` | SF validator **operator** mnemonics (separate from Horcrux-held consensus keys) |
+| `team-mnemonic.secret` | Team root mnemonic |
+| `operator-messages/` | Internal per-validator handover notes |
+| `_archive/` | Historical preprod artifacts (kept for reference, not part of mainnet) |
 
 ---
 
@@ -153,14 +205,17 @@ jq '[.app_state.staking.delegations[] | .shares | tonumber] | add' genesis.json
 
 | | |
 | :--- | :--- |
-| 🌐 Website  | [safrochain.network](https://safrochain.network) |
-| 📦 Node binary | [`safrochaind`](https://github.com/Safrochain-Org) |
-| 📝 Issues & review | Open an issue on this repository to flag concerns about this draft |
+| 🌐 Website  | [safrochain.com](https://safrochain.com) |
+| 📦 Node binary | [`safrochaind` v0.2.2](https://github.com/Safrochain-Org/safrochain-node/releases/tag/v0.2.2) |
+| 📚 Docs | [docs.safrochain.com](https://docs.safrochain.com) |
+| 📝 Issues | [Safrochain-Org/safrochain-node/issues](https://github.com/Safrochain-Org/safrochain-node/issues) |
 
 ---
 
 <div align="center">
 
 **Safrochain — Sovereign infrastructure for African on-chain finance**
+
+🌅 Launch: **2026-06-25 10:00 UTC**
 
 </div>
